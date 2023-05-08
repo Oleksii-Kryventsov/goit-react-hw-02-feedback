@@ -1,14 +1,20 @@
 import PropTypes from 'prop-types';
-import { OptionBtn, Options } from './FeedbackOptions.styled';
+import { OptionBtn, OptionItem, Options } from './FeedbackOptions.styled';
 
 
-export const FeedbackOptions = ({options, updateStatistic}) => {
+export const FeedbackOptions = ({ options, updateStatistic }) => {
+    return (
     <Options>
-        {options.map(btn => (
-            <OptionBtn key={btn} onClick={updateStatistic}>
-                {btn}
-            </OptionBtn>))};
-    </Options>  
+        {options.map(option => (
+            <OptionItem key={option}>
+                <OptionBtn type="button"
+            typeName={option}
+            onClick={() => updateStatistic(option)}>
+                     {option}
+                </OptionBtn>
+            </OptionItem>))}
+    </Options>
+    ) 
 };
 
 FeedbackOptions.propTypes = {
